@@ -10,7 +10,7 @@
 #import <NBULogStub.h>
 
 @implementation NNCrossFadeImageView{
-	NSTimer* _timer;
+	__weak NSTimer* _timer;
 	NSUInteger _counter;
 }
 
@@ -25,7 +25,13 @@
 	}
 }
 
+- (void)removeFromSuperview{
+	[super removeFromSuperview];
+	[_timer invalidate];
+}
+
 -(void)dealloc{
+	NBULogVerbose(@"dealloc");
 	[_timer invalidate];
 }
 
@@ -39,7 +45,8 @@
 
 -(void)setCrossFadeImages:(NSArray *)crossFadeImages{
 	_crossFadeImages = crossFadeImages;
-	_timer = [NSTimer scheduledTimerWithTimeInterval:_crossFadeInterval target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+	__weak typeof(self) _self = self;
+	_timer = [NSTimer scheduledTimerWithTimeInterval:_crossFadeInterval target:_self selector:@selector(onTimer:) userInfo:nil repeats:YES];
 	[self crossFade];
 }
 
