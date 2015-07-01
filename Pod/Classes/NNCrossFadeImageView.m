@@ -10,7 +10,7 @@
 #import <NBULogStub.h>
 
 @implementation NNCrossFadeImageView{
-	__weak NSTimer* _timer;
+	NSTimer* _timer;
 	NSUInteger _counter;
 }
 
@@ -25,6 +25,8 @@
 	}
 }
 
+
+/// NSTimerを使っている場合、こうやってオーバーライドしないとdeallocされません。http://stackoverflow.com/questions/5670431/nstimer-disables-dealloc-in-uiview
 - (void)removeFromSuperview{
 	[super removeFromSuperview];
 	[_timer invalidate];
@@ -45,8 +47,7 @@
 
 -(void)setCrossFadeImages:(NSArray *)crossFadeImages{
 	_crossFadeImages = crossFadeImages;
-	__weak typeof(self) _self = self;
-	_timer = [NSTimer scheduledTimerWithTimeInterval:_crossFadeInterval target:_self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+	_timer = [NSTimer scheduledTimerWithTimeInterval:_crossFadeInterval target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
 	[self crossFade];
 }
 
