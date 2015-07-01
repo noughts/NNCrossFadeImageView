@@ -8,7 +8,8 @@
 
 #import "NNViewController.h"
 #import <NNCrossFadeImageView/NNCrossFadeImageView.h>
-
+#import <NBULogStub.h>
+#import <NBULog.h>
 
 @implementation NNViewController{
 	__weak IBOutlet NNCrossFadeImageView* _iv;
@@ -16,7 +17,8 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	[NBULog setKitLogLevel:DDLogLevelVerbose];
+	
 }
 
 

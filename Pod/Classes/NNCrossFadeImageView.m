@@ -7,36 +7,30 @@
 //
 
 #import "NNCrossFadeImageView.h"
-#import <CADisplayLink+NNSprite.h>
+#import <NBULogStub.h>
 
-@implementation NNCrossFadeImageView
-
-
--(instancetype)initWithCoder:(NSCoder *)aDecoder{
-	if( self = [super initWithCoder:aDecoder] ){
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(render:) name:@"onEnterFrame" object:[CADisplayLink sharedLink]];
-	}
-	return self;
+@implementation NNCrossFadeImageView{
+	NSTimer* _timer;
 }
 
 
-
+-(void)awakeFromNib{
+	[super awakeFromNib];
+	_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+}
 
 -(void)dealloc{
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"onEnterFrame" object:[CADisplayLink sharedLink]];
+	[_timer invalidate];
 }
 
 
 
-
-
-
-
-
-
--(void)render:(NSNotification*)note{
-
+-(void)onTimer:(NSTimer*)timer{
+	NBULogVerbose(@"timer");
 }
+
+
+
 
 
 
