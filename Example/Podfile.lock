@@ -1,0 +1,17 @@
+PODS:
+  - NNCrossFadeImageView (0.1.0):
+    - NNSprite
+  - NNSprite (0.5.0)
+
+DEPENDENCIES:
+  - NNCrossFadeImageView (from `../`)
+
+EXTERNAL SOURCES:
+  NNCrossFadeImageView:
+    :path: ../
+
+SPEC CHECKSUMS:
+  NNCrossFadeImageView: 66e0337d7e8fc8a7ed0e7c5c8928685b1eb73567
+  NNSprite: 3d8e7690951045dad4a7ad65f07ecf1f22bb909b
+
+COCOAPODS: 0.37.2
