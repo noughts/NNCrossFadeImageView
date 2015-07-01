@@ -10,6 +10,13 @@
 
 @interface NNCrossFadeImageView : UIImageView
 
+/// クロスフェードにかける時間
+@property CGFloat crossFadeDuration;
+
+/// クロスフェードの間隔
+@property CGFloat crossFadeInterval;
+
+/// クロスフェード用画像配列
 @property(nonatomic) NSArray* crossFadeImages;
 
 @end

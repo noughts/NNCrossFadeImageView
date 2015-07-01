@@ -19,6 +19,11 @@
     [super viewDidLoad];
 	[NBULog setKitLogLevel:DDLogLevelVerbose];
 	
+	_iv.crossFadeImages = @[[UIImage imageNamed:@"IMG_1025.JPG"], [UIImage imageNamed:@"cheetah1136.png"]];
+}
+
+-(void)dealloc{
+	NBULogVerbose(@"dealloc");
 }
 
 
